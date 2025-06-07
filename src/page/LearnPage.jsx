@@ -259,7 +259,7 @@ const LearnPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-900">
+    <div className="min-h-screen pt-15 bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {!selectedPath ? (
           <>
