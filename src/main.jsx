@@ -7,7 +7,7 @@ import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
+    <GoogleOAuthProvider clientId="202580823383-lhfq9robejoj8i9vsg73d8jfnii4o7da.apps.googleusercontent.com">
     <BrowserRouter>
       <App />
     </BrowserRouter>
