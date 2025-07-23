@@ -18,6 +18,7 @@ import {
   Trophy,
   Brain,
   Target,
+  LogsIcon
 } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -180,7 +181,7 @@ export default function AuthPage() {
               <div className="inline-flex items-center space-x-2 bg-violet-500/10 border border-violet-500/20 rounded-full px-4 py-2">
                 <Sparkles className="w-4 h-4 text-violet-400" />
                 <span className="text-violet-300 text-sm font-medium">
-                  Join Now
+                  Get Started
                 </span>
               </div>
 
@@ -204,7 +205,7 @@ export default function AuthPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
               {[
                 {
-                  icon: Shield,
+                  icon: LogsIcon,
                   text: "Access to Problems",
                   color: "text-emerald-400",
                 },
@@ -214,7 +215,7 @@ export default function AuthPage() {
                   color: "text-violet-400",
                 },
                 {
-                  icon: Trophy,
+                  icon: Shield,
                   text: "Customized problems",
                   color: "text-orange-400",
                 },
@@ -243,9 +244,9 @@ export default function AuthPage() {
             {/* Stats */}
             <div className="flex justify-center lg:justify-start space-x-8">
               {[
-                { value: "2+", label: "Users" },
-                { value: "10+", label: "Problems" },
-                { value: "95%", label: "Success Rate" },
+                { value: "200+", label: "Users" },
+                { value: "30+", label: "Problems" },
+                { value: "98%", label: "Success Rate" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -18,6 +18,7 @@ import {
   Trophy,
   Brain,
   Target,
+  LogsIcon,
 } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -37,23 +38,15 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const { registers, isRegistered } = useAuthStore();
   const {
-      register,
-      handleSubmit,
-      formState:{errors},
-    } = useForm({
-      resolver:zodResolver(RegisterSchema)
-    })
-
-  const onSubmit = async (data)=>{
-   try {
-    await registers(data)
-    console.log("register data" , data)
-   } catch (error) {
-     console.error("registration failed:", error);
-   }
-  }
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(RegisterSchema),
+  });
 
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMatchError, setPasswordMatchError] = useState(""); // <-- Add this
   const [isLoading, setIsLoading] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -66,7 +59,7 @@ export default function Register() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-    const googleLogin = useGoogleLogin({
+  const googleLogin = useGoogleLogin({
     onSuccess: async (response) => {
       try {
         const res = await axios.get(
@@ -83,8 +76,8 @@ export default function Register() {
           email: res.data.email,
           image: res.data.picture,
           password: res.data.sub, // Using Google ID as password for simplicity
-        }
-        onSubmit(userData)
+        };
+        onSubmit(userData);
       } catch (error) {
         console.log(error);
       }
@@ -98,6 +91,40 @@ export default function Register() {
       setIsLoading(false);
       // Handle social auth logic here
     }, 1500);
+  };
+
+  const onSubmit = async (data) => {
+    if (data.password !== confirmPassword) {
+      setPasswordMatchError("Passwords do not match");
+      return;
+    }
+    setPasswordMatchError("");
+    try {
+      await registers(data);
+      console.log("register data", data);
+    } catch (error) {
+      console.error("registration failed:", error);
+    }
+  };
+
+  // Optional: Real-time feedback
+  useEffect(() => {
+    if (confirmPassword && confirmPassword !== "") {
+      if (confirmPassword !== watchPassword()) {
+        setPasswordMatchError("Passwords do not match");
+      } else {
+        setPasswordMatchError("");
+      }
+    }
+  }, [confirmPassword]);
+
+  // Helper to get password value from react-hook-form
+  const watchPassword = () => {
+    try {
+      return document.getElementById("password")?.value || "";
+    } catch {
+      return "";
+    }
   };
 
   const floatingIcons = [
@@ -181,7 +208,7 @@ export default function Register() {
               <div className="inline-flex items-center space-x-2 bg-violet-500/10 border border-violet-500/20 rounded-full px-4 py-2">
                 <Sparkles className="w-4 h-4 text-violet-400" />
                 <span className="text-violet-300 text-sm font-medium">
-                  Join Now
+                  Get Started
                 </span>
               </div>
 
@@ -204,10 +231,26 @@ export default function Register() {
             {/* Features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
               {[
-                { icon: Shield, text: "Access to Problems", color: "text-emerald-400" },
-                { icon: Zap, text: "Level up Skills", color: "text-violet-400" },
-                { icon: Trophy, text: "Customized problems", color: "text-orange-400" },
-                { icon: Brain, text: "Reference Solutions", color: "text-pink-400" },
+                {
+                  icon: LogsIcon,
+                  text: "Access to Problems",
+                  color: "text-emerald-400",
+                },
+                {
+                  icon: Zap,
+                  text: "Level up Skills",
+                  color: "text-violet-400",
+                },
+                {
+                  icon: Shield,
+                  text: "Customized problems",
+                  color: "text-orange-400",
+                },
+                {
+                  icon: Brain,
+                  text: "Reference Solutions",
+                  color: "text-pink-400",
+                },
               ].map((feature, index) => (
                 <div
                   key={index}
@@ -216,9 +259,7 @@ export default function Register() {
                   <div
                     className={`w-8 h-8 bg-${feature.color}-500/20 flex items-center justify-center`}
                   >
-                    <feature.icon
-                      className={`w-4 h-4 ${feature.color}`}
-                    />
+                    <feature.icon className={`w-4 h-4 ${feature.color}`} />
                   </div>
                   <span className="text-gray-300 font-medium">
                     {feature.text}
@@ -230,9 +271,9 @@ export default function Register() {
             {/* Stats */}
             <div className="flex justify-center lg:justify-start space-x-8">
               {[
-                { value: "2+", label: "Users" },
-                { value: "10+", label: "Problems" },
-                { value: "95%", label: "Success Rate" },
+                { value: "200+", label: "Users" },
+                { value: "30+", label: "Problems" },
+                { value: "98%", label: "Success Rate" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">
@@ -307,21 +348,21 @@ export default function Register() {
 
                 {/* Email Form */}
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-gray-300">
-                        Full Name
-                      </Label>
-                      <Input
-                        id="name"
-                        type="text"
-                        {...register("name")}
-                        placeholder="Enter your full name"
-                        className={`bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-violet-500 focus:ring-violet-500/20 ${
-                    errors.name ? "input-error" : ""
-                  }`}
-                        required
-                      />
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-gray-300">
+                      Full Name
+                    </Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      {...register("name")}
+                      placeholder="Enter your full name"
+                      className={`bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-violet-500 focus:ring-violet-500/20 ${
+                        errors.name ? "input-error" : ""
+                      }`}
+                      required
+                    />
+                  </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-gray-300">
@@ -376,23 +417,23 @@ export default function Register() {
                     </div>
                   </div>
 
-                    <div className="space-y-2">
-                      <Label
-                        htmlFor="confirmPassword"
-                        className="text-gray-300"
-                      >
-                        Confirm Password
-                      </Label>
-                      <Input
-                        id="confirmPassword"
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        placeholder="Confirm your password"
-                        className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-violet-500 focus:ring-violet-500/20"
-                        required
-                      />
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="confirmPassword" className="text-gray-300">
+                      Confirm Password
+                    </Label>
+                    <Input
+                      id="confirmPassword"
+                      type="password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder="Confirm your password"
+                      className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-violet-500 focus:ring-violet-500/20"
+                      required
+                    />
+                    {passwordMatchError && (
+                      <p className="text-red-500 text-sm mt-1">{passwordMatchError}</p>
+                    )}
+                  </div>
 
                   <Button
                     type="submit"
@@ -416,32 +457,32 @@ export default function Register() {
                 {/* Toggle Form */}
                 <div className="mt-6 text-center">
                   <p className="text-gray-400">
-                      Already have an account?{" "}
-                    <Link 
-                        to="/login"
+                    Already have an account?{" "}
+                    <Link
+                      to="/login"
                       className="text-violet-400 hover:text-violet-300 font-medium transition-colors cursor-pointer"
                     >
-                    Sign in
+                      Sign in
                     </Link>
                   </p>
                 </div>
 
-                  <p className="mt-4 text-xs text-gray-500 text-center">
-                    By creating an account, you agree to our{" "}
-                    <Link
-                      href="#"
-                      className="text-violet-400 hover:text-violet-300"
-                    >
-                      Terms of Service
-                    </Link>{" "}
-                    and{" "}
-                    <Link
-                      href="#"
-                      className="text-violet-400 hover:text-violet-300"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </p>
+                <p className="mt-4 text-xs text-gray-500 text-center">
+                  By creating an account, you agree to our{" "}
+                  <Link
+                    href="#"
+                    className="text-violet-400 hover:text-violet-300"
+                  >
+                    Terms of Service
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    href="#"
+                    className="text-violet-400 hover:text-violet-300"
+                  >
+                    Privacy Policy
+                  </Link>
+                </p>
               </CardContent>
             </Card>
           </div>
