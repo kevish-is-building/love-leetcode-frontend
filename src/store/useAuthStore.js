@@ -44,10 +44,18 @@ export const useAuthStore = create((set) => ({
       const res = await axiosInstance.post("/auth/login", data);
 
       set({ authUser: res.data.user });
-
       toast.success(res.data.message);
       return true;
     } catch (error) {
+      try {
+        if (data?.image) {
+          const res = await axiosInstance.post("/auth/register", data);
+          set({ authUser: res.data.user });
+          return true;
+        }
+      } catch (error) {
+        console.log("Error logging in", error);
+      }
       console.log("Error logging in", error);
       toast.error("Error logging in");
     } finally {

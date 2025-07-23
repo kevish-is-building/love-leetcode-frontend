@@ -17,6 +17,7 @@ import LearnPage from "./page/LearnPage";
 import ContestPage from "./page/ContestPage";
 import ContactUs from "./page/ContactUs";
 import Dashboard from "./page/Dashboard";
+import { useThree } from "@react-three/fiber";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -37,19 +38,18 @@ const App = () => {
     <>
       <Toaster />
       <Routes>
+        {/* Testing Route */}
         <Route path="/test" element={<LandingPage />} />
+
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={authUser ? <LandingPage /> : <Navigate to={"/login"} />}
-          />
+          <Route index element={<LandingPage />} />
           <Route
             path="/problems"
             element={authUser ? <AllProblems /> : <Navigate to={"/login"} />}
           />
-          <Route path="/learn" element={<LearnPage />} />
+          <Route path="/learn" element={authUser ? <LearnPage /> : <Navigate to={"/login"} />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to={"/login"} />} />
         </Route>
 
         <Route path="/contest" element={<ContestPage />} />
