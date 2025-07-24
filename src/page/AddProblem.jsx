@@ -900,7 +900,7 @@ const AddProblem = () => {
                   )}
                 </div>
                 <div className="mb-6">
-                  <label className="block text-indigo-200 font-medium mb-1 flex items-center gap-2">
+                  <label className="text-indigo-200 font-medium mb-1 flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-green-400" />
                     Reference Solution
                   </label>
