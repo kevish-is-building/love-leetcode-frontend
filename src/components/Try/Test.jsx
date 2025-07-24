@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Code, User, LogOut } from "lucide-react";
 
 import { useAuthStore } from "../../store/useAuthStore";
+import LogoutButton from "../LogoutButton";
 import GlassSurface from "./GlassSurface/GlassSurface";
 
 export default function Test() {
