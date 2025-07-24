@@ -1,10 +1,10 @@
 import axios from "axios";
-console.log(import.meta.env.MODE);
-console.log(import.meta.env.BACKEND_URL);
+
+
 export const axiosInstance = axios.create({
   baseURL:
-    import.meta.env.MODE === "production"
-      ? `${import.meta.env.BACKEND_URL}/api/v1`
+    import.meta.env.VITE_MODE === "production"
+      ? `${import.meta.env.VITE_BACKEND_URL}/api/v1`
       : "http://localhost:8080/api/v1",
   withCredentials: true,
 });
