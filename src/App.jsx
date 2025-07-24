@@ -18,7 +18,6 @@ import ContestPage from "./page/ContestPage";
 import ContactUs from "./page/ContactUs";
 import Dashboard from "./page/Dashboard";
 import { useThree } from "@react-three/fiber";
-import Test from "./components/Try/Test"
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -40,7 +39,7 @@ const App = () => {
       <Toaster />
       <Routes>
         {/* Testing Route */}
-        <Route path="/test" element={<Test />} />
+        {/* <Route path="/test" element={< />} /> */}
 
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
