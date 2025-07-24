@@ -140,7 +140,7 @@ export default function Test() {
                         <img
                           src={authUser?.data?.image}
                           alt="Profile"
-                          className="w-8 h-8 rounded-full hover:-scale-105 transition-all duration-200 cursor-pointer"
+                          className="w-8 h-8 rounded-full hover:scale-105 transition-all duration-200 cursor-pointer"
                         />
                       ) : (
                         <User size={20} />
