@@ -124,8 +124,8 @@ export default function Test() {
                         to="/add-problem"
                         className={`px-3 py-2 text-sm font-medium transition-colors duration-200 hover: ${
                           location.pathname === "/add-problem"
-                            ? "text-indigo-500"
-                            : "text-gray-300 hover:text-indigo-500"
+                            ? "text-lime-400"
+                            : "text-gray-300 hover:text-lime-400"
                         }`}
                       >
                         Add Problem
@@ -134,13 +134,13 @@ export default function Test() {
 
                     <Link
                       to="/dashboard"
-                      className="rounded-full text-gray-300 hover:text-rose-500 focus:outline-none"
+                      className="rounded-full text-gray-300 hover:text-lime-400 focus:outline-none cursor-pointer"
                     >
                       {authUser?.data?.image ? (
                         <img
                           src={authUser?.data?.image}
                           alt="Profile"
-                          className="w-8 h-8 rounded-full"
+                          className="w-8 h-8 rounded-full hover:-scale-105 transition-all duration-200 cursor-pointer"
                         />
                       ) : (
                         <User size={20} />
@@ -148,7 +148,7 @@ export default function Test() {
                     </Link>
                     {authUser && (
                       <LogoutButton className="">
-                        <LogOut className="w-4 h-4 text-white hover:text-rose-500" />
+                        <LogOut className="w-4 h-4 text-white hover:text-rose-500 cursor-pointer" />
                       </LogoutButton>
                     )}
                   </div>
