@@ -17,7 +17,7 @@ import LearnPage from "./page/LearnPage";
 import ContestPage from "./page/ContestPage";
 import ContactUs from "./page/ContactUs";
 import Dashboard from "./page/Dashboard";
-import { useThree } from "@react-three/fiber";
+import AdminPanel from "./page/AdminPanel";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -25,6 +25,9 @@ const App = () => {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+  useEffect(() => {
+    console.log(authUser);
+  }, [authUser]);
 
   if (isCheckingAuth && !authUser) {
     return (
@@ -43,13 +46,26 @@ const App = () => {
 
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
-          <Route
-            path="/problems"
-            element={authUser ? <AllProblems /> : <Navigate to={"/login"} />}
-          />
-          <Route path="/learn" element={authUser ? <LearnPage /> : <Navigate to={"/login"} />} />
+          {authUser && (
+            <Route
+              path="/problems"
+              element={authUser ? <AllProblems /> : <Navigate to={"/login"} />}
+            />
+          )}
+          {authUser && (
+            <Route
+              path="/learn"
+              element={authUser ? <LearnPage /> : <Navigate to={"/login"} />}
+            />
+          )}
+          {authUser && (
+            <Route
+              path="/dashboard"
+              element={authUser ? <Dashboard /> : <Navigate to={"/login"} />}
+            />
+          )}
+
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to={"/login"} />} />
         </Route>
 
         <Route path="/contest" element={<ContestPage />} />
@@ -64,16 +80,26 @@ const App = () => {
           element={!authUser ? <Register /> : <Navigate to={"/"} />}
         />
 
-        <Route
-          path="/problem/:id"
-          element={authUser ? <NewProblemSolver /> : <Navigate to={"/login"} />}
-        />
+        {authUser && (
+          <Route
+            path="/problem/:id"
+            element={
+              authUser ? <NewProblemSolver /> : <Navigate to={"/login"} />
+            }
+          />
+        )}
 
         <Route element={<AdminRoute />}>
           <Route
             path="/add-problem"
-            element={authUser ? <AddProblem /> : <Navigate to="/" />}
+            element={authUser ? <AddProblem /> : <Navigate to="/login" />}
           />
+          {authUser && (
+            <Route
+              path="/admin"
+              element={authUser ? <AdminPanel /> : <Navigate to="/" />}
+            />
+          )}
         </Route>
       </Routes>
     </>

@@ -12,13 +12,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const ComingSoon = ({ feature }) => {
-  {
-    console.log(
-      feature.objectives.map((item, idx) => {
-        console.log(item);
-      }),
-    );
-  }
+  // {
+  //   console.log(
+  //     feature.objectives.map((item, idx) => {
+  //       console.log(item);
+  //     }),
+  //   );
+  // }
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950/30 to-slate-900 relative overflow-hidden">
       {/* Animated Tech Background */}
