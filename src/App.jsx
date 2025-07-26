@@ -25,9 +25,6 @@ const App = () => {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
-  useEffect(() => {
-    console.log(authUser);
-  }, [authUser]);
 
   if (isCheckingAuth && !authUser) {
     return (
@@ -46,24 +43,18 @@ const App = () => {
 
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
-          {authUser && (
-            <Route
-              path="/problems"
-              element={authUser ? <AllProblems /> : <Navigate to={"/login"} />}
-            />
-          )}
-          {authUser && (
-            <Route
-              path="/learn"
-              element={authUser ? <LearnPage /> : <Navigate to={"/login"} />}
-            />
-          )}
-          {authUser && (
-            <Route
-              path="/dashboard"
-              element={authUser ? <Dashboard /> : <Navigate to={"/login"} />}
-            />
-          )}
+          <Route
+            path="/problems"
+            element={authUser ? <AllProblems /> : <Navigate to={"/login"} />}
+          />
+          <Route
+            path="/learn"
+            element={authUser ? <LearnPage /> : <Navigate to={"/login"} />}
+          />
+          <Route
+            path="/dashboard"
+            element={authUser ? <Dashboard /> : <Navigate to={"/login"} />}
+          />
 
           <Route path="/contact" element={<ContactUs />} />
         </Route>
@@ -80,14 +71,10 @@ const App = () => {
           element={!authUser ? <Register /> : <Navigate to={"/"} />}
         />
 
-        {authUser && (
-          <Route
-            path="/problem/:id"
-            element={
-              authUser ? <NewProblemSolver /> : <Navigate to={"/login"} />
-            }
-          />
-        )}
+        <Route
+          path="/problem/:id"
+          element={authUser ? <NewProblemSolver /> : <Navigate to={"/login"} />}
+        />
 
         <Route element={<AdminRoute />}>
           <Route
