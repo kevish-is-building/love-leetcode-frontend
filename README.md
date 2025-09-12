@@ -31,6 +31,31 @@ It’s more than just code — it’s **learning, sharing, and mastering togethe
 
 ---
 
+  ## 🚀 Live Demo
+  [Check out the live site!](https://loveleetcode.in)
+
+  ---
+
+  ## 🖼️ Screenshots
+  <p align="center">
+    <img src="public/Hero-Cube.webp" alt="Hero Screenshot" width="400" />
+    <img src="public/Logo.svg" alt="Logo" width="100" />
+  </p>
+
+  ---
+
+  ## 🚀 Quick Start
+
+  ```bash
+  git clone https://github.com/your-username/loveleetcode.in.git
+  cd love-leetcode-frontend
+  npm install
+  npm run dev
+  ```
+  Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+  ---
+
 ## 📂 Project Structure
 ```bash
 ├── frontend       # React app
