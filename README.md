@@ -1,4 +1,4 @@
-# ❤️ LoveLeetCode.in  
+# LoveLeetCode.in  
 > A hub for mastering **DSA, Problem Solving & Competitive Programming** 🚀  
 
 ![Made with Love](https://img.shields.io/badge/Made%20With-Love-red?style=for-the-badge)  
