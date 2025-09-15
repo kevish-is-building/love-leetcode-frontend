@@ -36,13 +36,6 @@ It’s more than just code — it’s **learning, sharing, and mastering togethe
 
   ---
 
-  ## 🖼️ Screenshots
-  <p align="center">
-    <img src="public/Hero-Cube.webp" alt="Hero Screenshot" width="400" />
-    <img src="public/Logo.svg" alt="Logo" width="100" />
-  </p>
-
-  ---
 
   ## 🚀 Quick Start
 
