@@ -1,9 +1,68 @@
 # ❤️ LoveLeetCode.in  
-> A hub for mastering **DSA, Problem Solving & Competitive Programming** 🚀  
+It's more than just code — it's **learning, sharing, and mastering together**. ❤️  
+
+---
+
+## 🎃 Hacktoberfest 2025
+
+We're participating in **Hacktoberfest 2025**! Join us in making open source contributions during October.
+
+- 🎯 **Goal**: Complete 4 quality pull requests
+- 🏆 **Rewards**: Digital badges and swag
+- 📋 **Get Started**: Check our [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines
+- 🔍 **Find Issues**: Look for `hacktoberfest` and `good first issue` labels
+
+[**Start Contributing →**](./CONTRIBUTING.md)
+
+---
+
+## 🚀 Quick Setup & Installation
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+- Git
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/kevish-is-building/love-leetcode-frontend.git
+   cd love-leetcode-frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   ```
+   http://localhost:5173
+   ```
+
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests (if available)
+
+**For detailed contribution guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md)** A hub for mastering **DSA, Problem Solving & Competitive Programming** 🚀  
 
 ![Made with Love](https://img.shields.io/badge/Made%20With-Love-red?style=for-the-badge)  
 ![LeetCode](https://img.shields.io/badge/Inspired%20By-LeetCode-orange?style=for-the-badge)  
-![Open Source](https://img.shields.io/badge/Open%20Source-Yes-blue?style=for-the-badge)  
+![Open Source](https://img.shields.io/badge/Open%20Source-Yes-blue?style=for-the-badge)
+![Hacktoberfest 2025](https://img.shields.io/badge/Hacktoberfest-2025-FF8AE2?style=for-the-badge)
+![Contributors Welcome](https://img.shields.io/badge/Contributors-Welcome-brightgreen?style=for-the-badge)
+![License](https://img.shields.io/github/license/kevish-is-building/love-leetcode-frontend?style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/kevish-is-building/love-leetcode-frontend?style=for-the-badge)
+![Pull Requests](https://img.shields.io/github/issues-pr/kevish-is-building/love-leetcode-frontend?style=for-the-badge)  
 
 ---
 
@@ -124,16 +183,3 @@ Because stars = motivation = more problems solved 🚀
 Made with ❤️ by the LoveLeetCode Community
 
 ----
-
-
-----
-Pr1
-
-----
-Pr2
-
-----
-Pr3
-
----
-Pr4
