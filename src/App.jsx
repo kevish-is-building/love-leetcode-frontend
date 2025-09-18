@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/useAuthStore";
 import Loader from "./components/Loader";
@@ -18,15 +18,17 @@ import ContestPage from "./page/ContestPage";
 import ContactUs from "./page/ContactUs";
 import Dashboard from "./page/Dashboard";
 import AdminPanel from "./page/AdminPanel";
+import BackendStatusPopup from "./components/BackendStatusPopup";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const location = useLocation();
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
-  if (isCheckingAuth && !authUser) {
+  if (isCheckingAuth && !authUser && location.pathname !== "/") {
     return (
       <div className="flex items-center justify-center h-screen">
         <Loader className="" />
@@ -37,6 +39,7 @@ const App = () => {
   return (
     <>
       <Toaster />
+      <BackendStatusPopup />
       <Routes>
         {/* Testing Route */}
         {/* <Route path="/test" element={< />} /> */}
