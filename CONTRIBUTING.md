@@ -12,7 +12,7 @@ Hacktoberfest is a month-long celebration of open source software run by Digital
 ### Hacktoberfest Rules 2025:
 - **Quality over Quantity**: PRs must be meaningful and add value
 - **No Spam**: Low-quality PRs (like adding your name to a contributors list) will be marked as spam
-- **Four Quality PRs**: Complete 4 high-quality pull requests to earn rewards
+- **Four Quality PRs**: Complete 6 high-quality pull requests to earn rewards
 - **Maintainer Approval**: PRs must be approved by maintainers
 - **Timeline**: October 1-31, 2025
 
