@@ -265,7 +265,7 @@ export default function AppHero() {
         animate="visible"
         className="relative z-10 mb-10 flex w-full max-w-[1450px] flex-grow flex-col items-center justify-center px-4 text-center sm:px-8 lg:mb-0 lg:items-start lg:justify-end lg:text-left"
       >
-        <motion.div className="flex w-full flex-col items-center justify-between lg:flex-row lg:items-start">
+        <motion.div className="flex w-full flex-col items-center justify-between lg:flex-row lg:items-start mt-155">
           <div className="w-full lg:w-auto">
             <motion.div
               variants={itemVariants}
@@ -279,9 +279,9 @@ export default function AppHero() {
 
             <motion.h1
               variants={itemVariants}
-              className="mb-6 bg-gradient-to-r from-white/70 via-white to-slate-500/80 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl"
+              className="  bg-gradient-to-r from-white/70 via-white to-slate-500/80 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl"
             >
-              <span className="text-6xl">
+              <span className="text-6xl ">
                 Master Data Structures and Algorithms{" "}
                 <br className="hidden sm:inline" />
               </span>
