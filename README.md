@@ -23,7 +23,7 @@ We're participating in **Hacktoberfest 2025**! Join us in making open source con
 - npm or yarn
 - Git
 
-### Installation Steps
+### Installation  Steps
 
 1. **Clone the repository**
    ```bash
