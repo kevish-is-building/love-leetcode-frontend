@@ -272,7 +272,7 @@ Contributors will be recognized in:
 
 - **Project Maintainer**: [@kevish-is-building](https://github.com/kevish-is-building)
 - **Email**: prokevish07@gmail.com
-- **X**: [@kevish_on_x]([(https://x.com/kevish_on_x)])
+- **X**: [@kevish_on_x](https://x.com/kevish_on_x)
 
 ## 📄 License
 
