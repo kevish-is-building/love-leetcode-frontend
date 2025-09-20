@@ -197,11 +197,11 @@ export default function AppHero() {
         </div>
       </div>
 
-      <div className="fadein-blur relative z-11 mx-auto mb-10 h-[300px] w-[300px] lg:absolute lg:right-1/2 lg:top-1/2 lg:mx-0 lg:mb-0 lg:h-[500px] lg:w-[500px] lg:-translate-y-2/3 lg:translate-x-1/2">
+      <div className=" fadein-blur relative z-11 mx-auto mb-100 h-[300px] w-[300px] lg:absolute lg:right-1/2 lg:top-1/2 lg:mx-0 lg:mb-0 lg:h-[500px] lg:w-[500px] lg:-translate-y-2/3 lg:translate-x-1/2">
         <img
           src="./Hero-Cube.webp"
           alt="Nexus Platform 3D Visualization"
-          className="h-full w-full object-contain drop-shadow-[0_0_35px_#3358ea85] transition-all duration-1000 hover:scale-110"
+          className="h-full w-full object-contain drop-shadow-[0_0_35px_#3358ea85] transition-all duration-1000 hover:scale-110 mt-[-50px] pd-0"
         />
         <motion.div
           variants={tooltipVariants}
@@ -263,9 +263,9 @@ export default function AppHero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mb-10 flex w-full max-w-[1450px] flex-grow flex-col items-center justify-center px-4 text-center sm:px-8 lg:mb-0 lg:items-start lg:justify-end lg:text-left"
+        className="relative z-10 mb-10 flex w-full  flex-grow flex-col items-center justify-center px-4 text-center sm:px-8 lg:mb-0 lg:items-start lg:justify-end lg:text-left"
       >
-        <motion.div className="flex w-full flex-col items-center justify-between lg:flex-row lg:items-start mt-155">
+        <motion.div className="flex w-full flex-col items-center justify-between lg:flex-row lg:items-start ">
           <div className="w-full lg:w-auto">
             <motion.div
               variants={itemVariants}
