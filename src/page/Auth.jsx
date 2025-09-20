@@ -18,7 +18,8 @@ import {
   Trophy,
   Brain,
   Target,
-  LogsIcon
+  LogsIcon,
+  ChevronLeft,
 } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -174,6 +175,12 @@ export default function AuthPage() {
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
+        {/* {Back to Home Button} */}
+        <ChevronLeft
+          onClick={() => navigator("/")}
+          className="bg-gradient-to-r from-violet-400 to-emerald-400 absolute top-10 left-8 rounded"
+          size={32}
+        />
         <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Marketing Content */}
           <div className="space-y-8 text-center lg:text-left animate-fade-in-left">
