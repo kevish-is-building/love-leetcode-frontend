@@ -29,7 +29,7 @@ Hacktoberfest is a month-long celebration of open source software run by Digital
 1. **Fork the Repository**
    ```bash
    # Click the "Fork" button on GitHub, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/love-leetcode-frontend.git
+   git clone https://github.com/<your-username>/love-leetcode-frontend.git
    cd love-leetcode-frontend
    ```
 

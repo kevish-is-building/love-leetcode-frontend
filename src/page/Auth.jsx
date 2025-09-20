@@ -32,7 +32,7 @@ const LoginSchema = z.object({
   email: z.string().email("Enter a valid email"),
   password: z.string().min(6, "Password must be atleast of 6 characters"),
 });
-
+console.log(import.meta.env.VITE_MODE);
 export default function AuthPage() {
   const { isLoggingIn, login } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
