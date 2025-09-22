@@ -19,13 +19,9 @@ import {
   Trophy,
   Brain,
   Target,
-<<<<<<< Updated upstream
-  LogsIcon
-=======
   LogsIcon,
   ChevronLeft,
   House,
->>>>>>> Stashed changes
 } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -277,14 +273,11 @@ export default function AuthPage() {
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-<<<<<<< Updated upstream
-=======
         {/* {Back to Home Button} */}
         <button onClick={() => navigate("/")} className="cursor-pointer absolute top-6 left-6 text-gray-300 flex items-center gap-1.5 group">
           <House className="text-neutral-300 group-hover:text-neutral-400" size={18} />
           <span className="group-hover:text-neutral-400 transition-all duration-200">Home</span>
         </button>
->>>>>>> Stashed changes
         <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Marketing Content */}
           <motion.div
