@@ -12,7 +12,7 @@ Hacktoberfest is a month-long celebration of open source software run by Digital
 ### Hacktoberfest Rules 2025:
 - **Quality over Quantity**: PRs must be meaningful and add value
 - **No Spam**: Low-quality PRs (like adding your name to a contributors list) will be marked as spam
-- **Four Quality PRs**: Complete 4 high-quality pull requests to earn rewards
+- **Four Quality PRs**: Complete 6 high-quality pull requests to earn rewards
 - **Maintainer Approval**: PRs must be approved by maintainers
 - **Timeline**: October 1-31, 2025
 
@@ -29,7 +29,7 @@ Hacktoberfest is a month-long celebration of open source software run by Digital
 1. **Fork the Repository**
    ```bash
    # Click the "Fork" button on GitHub, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/love-leetcode-frontend.git
+   git clone https://github.com/<your-username>/love-leetcode-frontend.git
    cd love-leetcode-frontend
    ```
 
@@ -271,8 +271,8 @@ Contributors will be recognized in:
 ## 📞 Contact
 
 - **Project Maintainer**: [@kevish-is-building](https://github.com/kevish-is-building)
-- **Email**: kevish.is.building@gmail.com
-- **Twitter**: [@kevish_is_building](https://twitter.com/kevish_is_building)
+- **Email**: prokevish07@gmail.com
+- **X**: [@kevish_on_x](https://x.com/kevish_on_x)
 
 ## 📄 License
 

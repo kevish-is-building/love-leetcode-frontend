@@ -99,7 +99,7 @@ It’s more than just code — it’s **learning, sharing, and mastering togethe
   ## 🚀 Quick Start
 
   ```bash
-  git clone https://github.com/your-username/loveleetcode.in.git
+   git clone https://github.com/kevish-is-building/loveleetcode.in.git
   cd love-leetcode-frontend
   npm install
   npm run dev
@@ -131,7 +131,7 @@ It’s more than just code — it’s **learning, sharing, and mastering togethe
 
 🚀 Quick Start
 
-git clone https://github.com/your-username/loveleetcode.in.git
+git clone https://github.com/kevish-is-building/loveleetcode.in.git
 
 🌍 Who is this for?
 
