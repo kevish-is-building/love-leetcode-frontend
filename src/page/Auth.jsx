@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo, useCallback } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -18,7 +19,13 @@ import {
   Trophy,
   Brain,
   Target,
+<<<<<<< Updated upstream
   LogsIcon
+=======
+  LogsIcon,
+  ChevronLeft,
+  House,
+>>>>>>> Stashed changes
 } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -28,15 +35,103 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
+const GoogleSignInButton = memo(function GoogleSignInButton({ onClick }) {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const onError = () => setLoading(false);
+    window.addEventListener("google-auth-error", onError);
+    return () => window.removeEventListener("google-auth-error", onError);
+  }, []);
+
+  const handleClick = useCallback(() => {
+    if (loading) return;
+    setLoading(true);
+    try {
+      const maybePromise = onClick?.();
+      if (maybePromise && typeof maybePromise.then === "function") {
+        maybePromise.catch(() => {
+          setLoading(false);
+        });
+      }
+      // On success, the app reloads; no need to unset loading.
+    } catch (_) {
+      setLoading(false);
+    }
+  }, [onClick, loading]);
+
+  return (
+    <Button
+      onClick={handleClick}
+      disabled={loading}
+      aria-busy={loading}
+      className="w-full bg-white hover:bg-gray-100 disabled:hover:bg-white text-gray-900 font-medium py-3 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-60 cursor-pointer"
+    >
+      {loading ? (
+        <span className="flex items-center gap-2">
+          <span className="w-4 h-4 border-2 border-gray-400/50 border-t-gray-900 rounded-full animate-spin" />
+          Connecting to Google...
+        </span>
+      ) : (
+        <span className="flex items-center">
+          <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+            <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+            <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+            <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+          </svg>
+          Continue with Google
+        </span>
+      )}
+    </Button>
+  );
+});
+
 const LoginSchema = z.object({
   email: z.string().email("Enter a valid email"),
   password: z.string().min(6, "Password must be atleast of 6 characters"),
 });
 
 export default function AuthPage() {
+  const fadeLeft = {
+    initial: { opacity: 0, x: -16, filter: "blur(8px)" },
+    animate: { opacity: 1, x: 0, filter: "blur(0px)" },
+    transition: { duration: 0.45, ease: "easeOut" },
+  };
+  const fadeRight = {
+    initial: { opacity: 0, x: 16, filter: "blur(8px)" },
+    animate: { opacity: 1, x: 0, filter: "blur(0px)" },
+    transition: { duration: 0.5, ease: "easeOut", delay: 0.05 },
+  };
+  const listStagger = {
+    hidden: { opacity: 0, filter: "blur(6px)", y: 8 },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.08, delayChildren: 0.05 },
+    },
+  };
+  const itemFade = {
+    hidden: { opacity: 0, filter: "blur(6px)", y: 8 },
+    visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+  };
+  const statsStagger = {
+    hidden: { opacity: 0, filter: "blur(6px)", y: 6 },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      transition: { duration: 0.35, ease: "easeOut", staggerChildren: 0.1, delayChildren: 0.15 },
+    },
+  };
+  const statItem = {
+    hidden: { opacity: 0, filter: "blur(6px)", y: 6 },
+    visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  };
   const { isLoggingIn, login } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -88,7 +183,15 @@ export default function AuthPage() {
         onSubmit(userData);
       } catch (error) {
         console.log(error);
+        try {
+          window.dispatchEvent(new CustomEvent("google-auth-error"));
+        } catch (_) {}
       }
+    },
+    onError: () => {
+      try {
+        window.dispatchEvent(new CustomEvent("google-auth-error"));
+      } catch (_) {}
     },
   });
   const handleSocialAuth = (provider) => {
@@ -174,11 +277,24 @@ export default function AuthPage() {
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
+<<<<<<< Updated upstream
+=======
+        {/* {Back to Home Button} */}
+        <button onClick={() => navigate("/")} className="cursor-pointer absolute top-6 left-6 text-gray-300 flex items-center gap-1.5 group">
+          <House className="text-neutral-300 group-hover:text-neutral-400" size={18} />
+          <span className="group-hover:text-neutral-400 transition-all duration-200">Home</span>
+        </button>
+>>>>>>> Stashed changes
         <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Marketing Content */}
-          <div className="space-y-8 text-center lg:text-left animate-fade-in-left">
+          <motion.div
+            className="space-y-8 text-center lg:text-left"
+            initial={fadeLeft.initial}
+            animate={fadeLeft.animate}
+            transition={fadeLeft.transition}
+          >
             <div className="space-y-4">
-              <div className="inline-flex items-center space-x-2 bg-violet-500/10 border border-violet-500/20 rounded-full px-4 py-2">
+              <div className="inline-flex items-center space-x-2 bg-violet-500/10 border border-violet-500/20 rounded-full px-4 py-2 transition-all duration-300 ring-1 ring-violet-400/0 hover:ring-violet-400/25 hover:bg-violet-500/15 hover:border-violet-400/30 hover:shadow-[0_0_24px_4px_rgba(139,92,246,0.22)]">
                 <Sparkles className="w-4 h-4 text-violet-400" />
                 <span className="text-violet-300 text-sm font-medium">
                   Get Started
@@ -202,64 +318,63 @@ export default function AuthPage() {
             </div>
 
             {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0"
+              variants={listStagger}
+              initial="hidden"
+              animate="visible"
+            >
               {[
-                {
-                  icon: LogsIcon,
-                  text: "Access to Problems",
-                  color: "text-emerald-400",
-                },
-                {
-                  icon: Zap,
-                  text: "Level up Skills",
-                  color: "text-violet-400",
-                },
-                {
-                  icon: Shield,
-                  text: "Customized problems",
-                  color: "text-orange-400",
-                },
-                {
-                  icon: Brain,
-                  text: "Reference Solutions",
-                  color: "text-pink-400",
-                },
-              ].map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-3 p-3 bg-gray-800/30 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
-                >
-                  <div
-                    className={`w-8 h-8 bg-${feature.color}-500/20 flex items-center justify-center`}
+                { icon: LogsIcon, text: "Access to Problems", color: "text-emerald-400" },
+                { icon: Zap, text: "Level up Skills", color: "text-violet-400" },
+                { icon: Shield, text: "Customized problems", color: "text-orange-400" },
+                { icon: Brain, text: "Reference Solutions", color: "text-pink-400" },
+              ].map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    className="flex items-center space-x-3 p-3 bg-gray-800/30 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
+                    variants={itemFade}
                   >
-                    <feature.icon className={`w-4 h-4 ${feature.color}`} />
-                  </div>
-                  <span className="text-gray-300 font-medium">
-                    {feature.text}
-                  </span>
-                </div>
-              ))}
-            </div>
+                    <div className="w-8 h-8 bg-gray-700/30 flex items-center justify-center">
+                      <Icon className={`w-4 h-4 ${feature.color}`} />
+                    </div>
+                    <span className="text-gray-300 font-medium">{feature.text}</span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
 
             {/* Stats */}
-            <div className="flex justify-center lg:justify-start space-x-8">
+            <motion.div
+              className="flex justify-center lg:justify-start space-x-8"
+              variants={statsStagger}
+              initial="hidden"
+              animate="visible"
+            >
               {[
                 { value: "200+", label: "Users" },
                 { value: "30+", label: "Problems" },
                 { value: "98%", label: "Success Rate" },
               ].map((stat, index) => (
-                <div key={index} className="text-center">
+                <motion.div key={index} className="text-center" variants={statItem}>
                   <div className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">
                     {stat.value}
                   </div>
                   <div className="text-gray-400 text-sm">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Side - Auth Form */}
-          <div className="flex justify-center animate-fade-in-right">
+          <motion.div
+            className="flex justify-center"
+            initial={fadeRight.initial}
+            animate={fadeRight.animate}
+            transition={fadeRight.transition}
+          >
             <Card className="w-full max-w-md bg-gray-900/50 border-gray-700/50 backdrop-blur-sm shadow-2xl">
               <CardContent className="p-8">
                 {/* Form Header */}
@@ -274,31 +389,7 @@ export default function AuthPage() {
 
                 {/* Social Auth Buttons */}
                 <div className="space-y-3 mb-6">
-                  <Button
-                    onClick={() => googleLogin()}
-                    disabled={isLoading}
-                    className="w-full bg-white hover:bg-gray-100 text-gray-900 font-medium py-3 transition-all duration-300 transform hover:scale-[1.02] cursor-pointer"
-                  >
-                    <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                      <path
-                        fill="currentColor"
-                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                      />
-                      <path
-                        fill="currentColor"
-                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                      />
-                      <path
-                        fill="currentColor"
-                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                      />
-                      <path
-                        fill="currentColor"
-                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                      />
-                    </svg>
-                    Continue with Google
-                  </Button>
+                  <GoogleSignInButton onClick={googleLogin} />
 
                   {/* <Button
                     onClick={() => handleSocialAuth("github")}
@@ -409,7 +500,7 @@ export default function AuthPage() {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
