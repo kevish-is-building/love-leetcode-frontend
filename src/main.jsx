@@ -7,9 +7,17 @@ import "./index.css";
 import App from "./App.jsx";
 
 inject();
+
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || "";
+if (!googleClientId) {
+  // eslint-disable-next-line no-console
+  console.log(
+    "VITE_GOOGLE_CLIENT_ID is not set. Google OAuth will not work.........",
+  );
+}
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <GoogleOAuthProvider clientId="202580823383-lhfq9robejoj8i9vsg73d8jfnii4o7da.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={googleClientId}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
