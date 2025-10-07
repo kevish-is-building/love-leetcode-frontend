@@ -69,7 +69,7 @@ const Footer = () => {
               <li><a href="/learn" className="text-slate-300 hover:text-purple-400 transition-colors text-sm">Coding Rookie</a></li>
               <li><a href="/learn" className="text-slate-300 hover:text-purple-400 transition-colors text-sm">Code Explorer</a></li>
               <li><a href="/learn" className="text-slate-300 hover:text-purple-400 transition-colors text-sm">Algorithm Architect</a></li>
-              <li><a href="/learn" className="text-slate-300 hover:text-purple-400 transition-colors text-sm">Coding Champion</a></li>
+              <li><a href="/learn" className="text-slate-300 hover:text-purple-400 transition-colors text-sm">Coding learnergit </a></li>
             </ul>
           </div>
 
@@ -100,7 +100,7 @@ const Footer = () => {
               <div className="text-sm text-slate-400">Active Users</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-400">100+</div>
+              <div className="text-2xl font-bold text-green-400">200+</div>
               <div className="text-sm text-slate-400">Topics Covered</div>
             </div>
             <div className="text-center">
