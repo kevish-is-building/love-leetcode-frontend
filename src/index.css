@@ -57,7 +57,7 @@
       #1e1b4b 25%,
       #312e81 50%,
       #1e1b4b 75%,
-      #0f172a 100%
+      #0f172a 20%
     );
   }
 
@@ -94,7 +94,7 @@
     left: 10%;
     width: 2px;
     height: 2px;
-    background: #a855f7;
+    background: #52049b;
     border-radius: 50%;
     animation: float 6s ease-in-out infinite;
     box-shadow: 100px 200px 0 #8b5cf6, 200px 100px 0 #7c3aed,
@@ -238,7 +238,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(46.975% 0.19643 307.716);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
