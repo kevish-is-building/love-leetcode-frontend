@@ -38,7 +38,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-slate-300 max-w-md mb-6">
-              Master coding through structured learning paths, solve challenging problems, and build your programming expertise with our comprehensive platform.
+              Master coding through structured, solve challenging problems, and build your programming expertise with our comprehensive platform.
             </p>
             <div className="flex space-x-4">
               <div className="p-2 bg-slate-800/50 rounded-lg hover:bg-purple-500/20 transition-colors cursor-pointer group">
@@ -100,7 +100,7 @@ const Footer = () => {
               <div className="text-sm text-slate-400">Active Users</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-400">100+</div>
+              <div className="text-2xl font-bold text-red-400">100+</div>
               <div className="text-sm text-slate-400">Topics Covered</div>
             </div>
             <div className="text-center">
