@@ -96,7 +96,7 @@ const Footer = () => {
               <div className="text-sm text-slate-400">Problems</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400">5000+</div>
+              <div className="text-2xl font-bold text-orange-400">26000+</div>
               <div className="text-sm text-slate-400">Active Users</div>
             </div>
             <div className="text-center">
