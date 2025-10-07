@@ -100,7 +100,7 @@ const Footer = () => {
               <div className="text-sm text-slate-400">Active Users</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-400">1000+</div>
+              <div className="text-2xl font-bold text-green-400">200+</div>
               <div className="text-sm text-slate-400">Topics Covered</div>
             </div>
             <div className="text-center">
