@@ -92,15 +92,15 @@ const Footer = () => {
         <div className="border-t border-purple-500/20 mt-8 pt-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400">500+</div>
+              <div className="text-2xl font-bold text-purple-400">5000+</div>
               <div className="text-sm text-slate-400">Problems</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400">5000+</div>
+              <div className="text-2xl font-bold text-blue-400">50000+</div>
               <div className="text-sm text-slate-400">Active Users</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-400">100+</div>
+              <div className="text-2xl font-bold text-green-400">200+</div>
               <div className="text-sm text-slate-400">Topics Covered</div>
             </div>
             <div className="text-center">
