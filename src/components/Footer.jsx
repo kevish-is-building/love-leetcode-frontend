@@ -104,7 +104,7 @@ const Footer = () => {
               <div className="text-sm text-slate-400">Topics Covered</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-400">24/7</div>
+              <div className="text-2xl font-bold text-teal-400">24/7</div>
               <div className="text-sm text-slate-400">Learning Support</div>
             </div>
           </div>
