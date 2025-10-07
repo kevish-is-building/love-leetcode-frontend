@@ -109,8 +109,8 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="text-center">
-            <p className="text-slate-400">© 2025 Love Leetcode. All rights reserved. Empowering developers worldwide.</p>
+          <div className="text-justify">
+            <p className="text-slate-100">© 2025 Love Leetcode. All rights reserved. Empowering developers worldwide.</p>
           </div>
         </div>
       </div>
