@@ -52,7 +52,7 @@ const Footer = () => {
               </a>
               </div>
               <div className="p-2 bg-slate-800/50 rounded-lg hover:bg-purple-500/20 transition-colors cursor-pointer group">
-              <a href="https://www.linkedin.com/in/kevish-sewliya/">
+              <a href="https://www.linkedin.com/in/jatin-kumar-551bb530a/">
                 <Linkedin className="h-5 w-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
               </a>
               </div>
