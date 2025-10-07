@@ -13,19 +13,19 @@ const Footer = () => {
                 <Code2 className="h-6 w-6 text-white" />
               </div> */}
               <svg
-                    width="50"
-                    height="50"
+                    width="90"
+                    height="40"
                     viewBox="0 0 91 187"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M39.28 63.352H56.56L43.12 138.616H82.032L79.088 155H23.024L39.28 63.352Z"
-                      fill="white"
+                      fill="black"
                     />
                     <path
                       d="M17.28 31.352H34.56L21.12 106.616H60.032L57.088 123H1.024L17.28 31.352Z"
-                      fill="white"
+                      fill="beige"
                     />
                   </svg>
               <div className="flex items-center space-x-2">
@@ -33,7 +33,7 @@ const Footer = () => {
                   Love Leetcode
                 </span>
                 <div className="px-2 py-1 bg-purple-500/20 rounded-lg">
-                  <Zap className="w-3 h-3 text-purple-400" />
+                  <Zap className="w-3 h-3 text-red-400" />
                 </div>
               </div>
             </div>
@@ -42,7 +42,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <div className="p-2 bg-slate-800/50 rounded-lg hover:bg-purple-500/20 transition-colors cursor-pointer group">
-              <a href="https://github.com/Kevish07" target="blank">
+              <a href="https://github.com/Barnakdas-tech" target="blank">
                 <Github className="h-5 w-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
               </a>
               </div>
@@ -52,7 +52,7 @@ const Footer = () => {
               </a>
               </div>
               <div className="p-2 bg-slate-800/50 rounded-lg hover:bg-purple-500/20 transition-colors cursor-pointer group">
-              <a href="https://www.linkedin.com/in/kevish-sewliya/">
+              <a href="www.linkedin.com/in/barnakdas">
                 <Linkedin className="h-5 w-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
               </a>
               </div>
