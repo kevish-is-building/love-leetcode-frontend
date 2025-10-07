@@ -29,7 +29,7 @@ const Footer = () => {
                     />
                   </svg>
               <div className="flex items-center space-x-2">
-                <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
                   Love Leetcode
                 </span>
                 <div className="px-2 py-1 bg-purple-500/20 rounded-lg">
@@ -62,7 +62,7 @@ const Footer = () => {
           {/* Learning Paths */}
           <div>
             <h3 className="text-white font-semibold mb-4 flex items-center">
-              <Target className="h-4 w-4 mr-2 text-purple-400" />
+              <Target className="h-4 w-4 mr-2 text-green-400" />
               Learning Paths
             </h3>
             <ul className="space-y-2">
@@ -76,7 +76,7 @@ const Footer = () => {
           {/* Platform Features */}
           <div>
             <h3 className="text-white font-semibold mb-4 flex items-center">
-              <Trophy className="h-4 w-4 mr-2 text-purple-400" />
+              <Trophy className="h-4 w-4 mr-2 text-yellow-400" />
               Platform
             </h3>
             <ul className="space-y-2">
@@ -92,11 +92,11 @@ const Footer = () => {
         <div className="border-t border-purple-500/20 mt-8 pt-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400">500+</div>
+              <div className="text-2xl font-bold text-yellow-400">500+</div>
               <div className="text-sm text-slate-400">Problems</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400">5000+</div>
+              <div className="text-2xl font-bold text-red-400">5000+</div>
               <div className="text-sm text-slate-400">Active Users</div>
             </div>
             <div className="text-center">
@@ -104,7 +104,7 @@ const Footer = () => {
               <div className="text-sm text-slate-400">Topics Covered</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-400">24/7</div>
+              <div className="text-2xl font-bold text-blue-400">24/7</div>
               <div className="text-sm text-slate-400">Learning Support</div>
             </div>
           </div>
