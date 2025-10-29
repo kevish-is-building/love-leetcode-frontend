@@ -93,19 +93,19 @@ const Footer = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="text-center">
               <div className="text-2xl font-bold text-yellow-400">500+</div>
-              <div className="text-sm text-slate-200 font-light">Problems</div>
+              <div className="text-sm text-slate-200">Problems</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-red-400">5000+</div>
-              <div className="text-sm text-slate-200 font-light">Active Users</div>
+              <div className="text-sm text-slate-200">Active Users</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-green-400">100+</div>
-              <div className="text-sm text-slate-200 font-light">Topics Covered</div>
+              <div className="text-sm text-slate-200">Topics Covered</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-400">24/7</div>
-              <div className="text-sm text-slate-200 font-light">Learning Support</div>
+              <div className="text-sm text-slate-200">Learning Support</div>
             </div>
           </div>
           
