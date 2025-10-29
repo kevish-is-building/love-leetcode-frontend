@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+// reference to satisfy some linters that don't detect JSX usage of `motion`
+void motion;
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -65,25 +67,6 @@ export default function AppHero() {
     },
   };
 
-  // Floating animation for the cube
-  const floatingAnimation = {
-    y: [0, -10, 0],
-    transition: {
-      duration: 4,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  };
-
-  // Rotation animation for the orbital ring
-  const rotateAnimation = {
-    rotate: 360,
-    transition: {
-      duration: 20,
-      repeat: Infinity,
-      ease: "linear",
-    },
-  };
 
   // Glowing effect animation
   const glowAnimation = {
@@ -110,16 +93,7 @@ export default function AppHero() {
     },
   };
 
-  // Badge pulse animation
-  const badgePulse = {
-    scale: [1, 1.05, 1],
-    opacity: [0.9, 1, 0.9],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  };
+  // (Unused float/rotate/badge animations removed)
 
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center overflow-hidden bg-black py-16 text-white sm:px-6 lg:px-8 lg:py-2">
@@ -205,9 +179,24 @@ export default function AppHero() {
         />
         <motion.div
           variants={tooltipVariants}
-          className="absolute -left-4 top-4  border border-purple-500/30 bg-black/80 p-2 backdrop-blur-md lg:-left-20 lg:top-1/4"
+          className="absolute -left-4 top-4 lg:-left-20 lg:top-1/4"
         >
-          <div className="flex items-center gap-2">
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+              boxShadow: [
+                "0 0 10px rgba(168,85,247,0.4)",
+                "0 0 20px rgba(168,85,247,0.8)",
+                "0 0 10px rgba(168,85,247,0.4)",
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="flex items-center gap-2 p-2 rounded-full bg-black/80 border border-purple-500/30 backdrop-blur-md"
+          >
             <Zap className="h-4 w-4 text-purple-400" />
             <span className="text-xs font-medium text-purple-200">
               <BlurText
@@ -218,14 +207,29 @@ export default function AppHero() {
                 className="text-l"
               />
             </span>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           variants={tooltipVariants}
-          className="absolute -right-4 top-1/2  border border-blue-500/30 bg-black/80 p-2 backdrop-blur-md lg:-right-24"
+          className="absolute -right-4 top-1/2 lg:-right-24"
         >
-          <div className="flex items-center gap-2">
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+              boxShadow: [
+                "0 0 10px rgba(59,130,246,0.4)",
+                "0 0 20px rgba(59,130,246,0.8)",
+                "0 0 10px rgba(59,130,246,0.4)",
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="flex items-center gap-2 p-2 rounded-full bg-black/80 border border-blue-500/30 backdrop-blur-md"
+          >
             <Database className="h-4 w-4 text-blue-400" />
             <span className="text-xs font-medium text-blue-200">
               <BlurText
@@ -236,14 +240,29 @@ export default function AppHero() {
                 className="text-l"
               />
             </span>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           variants={tooltipVariants}
-          className="absolute bottom-4 left-4 border border-indigo-500/30 bg-black/80 p-2 backdrop-blur-md lg:bottom-1/4 lg:left-8"
+          className="absolute bottom-4 left-4 lg:bottom-1/4 lg:left-8"
         >
-          <div className="flex items-center gap-2">
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+              boxShadow: [
+                "0 0 10px rgba(99,102,241,0.4)",
+                "0 0 20px rgba(99,102,241,0.8)",
+                "0 0 10px rgba(99,102,241,0.4)",
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="flex items-center gap-2 p-2 rounded-full bg-black/80 border border-indigo-500/30 backdrop-blur-md"
+          >
             <Sparkles className="h-4 w-4 text-indigo-400" />
             <span className="text-xs font-medium text-indigo-200">
               <BlurText
@@ -254,7 +273,7 @@ export default function AppHero() {
                 className="text-l"
               />
             </span>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
