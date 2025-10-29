@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={`fixed w-full z-50 transition-all duration-300 p-0 m-0`}>
-        <div className="relative w-full flex justify-center">
+        <div className="relative w-full flex justify-center ">
           <GlassSurface
             width="100%"
             // height="100%"
@@ -168,7 +168,7 @@ const Navbar = () => {
 
               {/* Mobile menu */}
               <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
-                <div className="px-2 pt-2 pb-3 space-y-1 backdrop-blur-sm sm:px-3 shadow-lg">
+                <div className="relative px-2 pt-2 pb-3 space-y-1 backdrop-blur-sm sm:px-3 shadow-lg">
                   {navLinks.map((link) => (
                     <Link
                       key={link.name}
@@ -194,6 +194,7 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
+
             </div>
           </GlassSurface>
         </div>
