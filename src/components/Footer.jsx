@@ -43,17 +43,17 @@ const Footer = () => {
             <div className="flex space-x-4">
               <div className="p-2 bg-slate-800/50 rounded-lg hover:bg-purple-500/20 transition-colors cursor-pointer group">
               <a href="https://github.com/Kevish07" target="blank">
-                <Github className="h-5 w-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                <Github className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors" />
               </a>
               </div>
               <div className="p-2 bg-slate-800/50 rounded-lg hover:bg-purple-500/20 transition-colors cursor-pointer group">
               <a href="https://x.com/kevish_on_x">
-                <Twitter className="h-5 w-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                <Twitter className="h-5 w-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
               </a>
               </div>
               <div className="p-2 bg-slate-800/50 rounded-lg hover:bg-purple-500/20 transition-colors cursor-pointer group">
               <a href="https://www.linkedin.com/in/kevish-sewliya/">
-                <Linkedin className="h-5 w-5 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                <Linkedin className="h-5 w-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
               </a>
               </div>
             </div>
