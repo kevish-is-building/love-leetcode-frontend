@@ -62,16 +62,19 @@ export default function LearningPath() {
             {course.map((path, index) => (
               <Card
                 key={index}
-                className="bg-gray-800/30 border-gray-700 hover:bg-gray-800/50 transition-all duration-300  shadow-lg hover:shadow-lg transform hover:scale-101 rounded-2xl"
+                // --- Change 2: Added shadow-lg for better card appearance ---
+                className="bg-gray-800/30 border-gray-700 hover:bg-gray-800/50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.01] rounded-2xl"
               >
                 <CardContent className="">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       <div
-                        className={`w-12 h-12 bg-${path.color}-500/20 border border-${path.color}-500/30 flex items-center justify-center`}
+                        // --- Change 2: Changed to rounded-full and fixed background/border for better visibility ---
+                        className={`w-12 h-12 bg-gray-700/50 rounded-full border border-gray-600 flex items-center justify-center shadow-md`}
                       >
                         <CheckCircle
-                          className={`w-6 h-6 text-${path.color}-400`}
+                          // --- Change 1: Fixed icon color to purple-400 to ensure it is NOT black (The main fix for #45) ---
+                          className="w-6 h-6 text-purple-400"
                         />
                       </div>
                       <div>
