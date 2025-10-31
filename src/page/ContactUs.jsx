@@ -39,22 +39,22 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center w-full overflow-hidden bg-background py-16 md:py-24 bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-900">
+    <section className="min-h-screen flex items-center justify-center w-full overflow-hidden py-16 md:py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_50%,#63e_100%)]">
       <div
         className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full opacity-20 blur-[120px]"
         style={{
-          background: `radial-gradient(circle at center, #e60a64, transparent 70%)`,
+          background: `radial-gradient(circle at center, #a855f7, transparent 70%)`,
         }}
       />
       <div
-        className="absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full opacity-10 blur-[100px]"
+        className="absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full opacity-15 blur-[100px]"
         style={{
-          background: `radial-gradient(circle at center, #e60a64, transparent 70%)`,
+          background: `radial-gradient(circle at center, #3b82f6, transparent 70%)`,
         }}
       />
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-border/40 bg-secondary/20 shadow-xl backdrop-blur-sm">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-gray-700/50 bg-gray-800/30 shadow-2xl backdrop-blur-xl">
           <div className="grid md:grid-cols-2">
             <div className="relative p-6 md:p-10" ref={formRef}>
               <motion.div
@@ -63,14 +63,14 @@ export default function ContactUs() {
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                 }
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex w-full gap-2"
+                className="mb-8"
               >
-                <h2 className="mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-4xl font-bold tracking-tight md:text-5xl">
-                  Contact
+                <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
+                  Get In Touch
                 </h2>
-                <span className="relative z-10 w-full text-4xl font-bold italic tracking-tight text-primary md:text-5xl">
-                  Us
-                </span>
+                <p className="text-gray-400 text-base">
+                  Have a question or feedback? We'd love to hear from you.
+                </p>
               </motion.div>
 
               <motion.form
@@ -80,7 +80,7 @@ export default function ContactUs() {
                 }
                 transition={{ duration: 0.5, delay: 0.3 }}
                 onSubmit={handleSubmit}
-                className="mt-8 space-y-6"
+                className="space-y-6"
               >
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <motion.div
@@ -89,13 +89,14 @@ export default function ContactUs() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name" className="text-gray-300">Name</Label>
                     <Input
                       id="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Enter your name"
                       required
+                      className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-purple-500 focus:ring-purple-500/20"
                     />
                   </motion.div>
 
@@ -105,7 +106,7 @@ export default function ContactUs() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="text-gray-300">Email</Label>
                     <Input
                       id="email"
                       type="email"
@@ -113,6 +114,7 @@ export default function ContactUs() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
+                      className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-purple-500 focus:ring-purple-500/20"
                     />
                   </motion.div>
                 </div>
@@ -123,14 +125,14 @@ export default function ContactUs() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message" className="text-gray-300">Message</Label>
                   <Textarea
                     id="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Enter your message"
                     required
-                    className="h-40 resize-none"
+                    className="h-40 resize-none bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-purple-500 focus:ring-purple-500/20"
                   />
                 </motion.div>
 
@@ -142,7 +144,7 @@ export default function ContactUs() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">
@@ -169,14 +171,14 @@ export default function ContactUs() {
               className="relative my-8 flex items-center justify-center overflow-hidden pr-8"
             >
               <div className="flex flex-col items-center justify-center overflow-hidden">
-                <article className="relative mx-auto h-[350px] min-h-60 max-w-[450px] overflow-hidden rounded-3xl border bg-gradient-to-b from-[#e60a64] to-[#e60a64]/5 p-6 text-3xl tracking-tight text-white md:h-[450px] md:min-h-80 md:p-8 md:text-4xl md:leading-[1.05] lg:text-5xl">
-                  Presenting you with the best Service possible.
+                <article className="relative mx-auto h-[350px] min-h-60 max-w-[450px] overflow-hidden rounded-2xl border border-purple-500/30 bg-gradient-to-b from-purple-600 to-purple-900/20 p-6 text-3xl tracking-tight text-white md:h-[450px] md:min-h-80 md:p-8 md:text-4xl md:leading-[1.05] lg:text-5xl shadow-xl shadow-purple-500/20">
+                  Presenting you with the best service possible.
                   <div className="absolute -bottom-20 -right-20 z-10 mx-auto flex h-full w-full max-w-[300px] items-center justify-center transition-all duration-700 hover:scale-105 md:-bottom-28 md:-right-28 md:max-w-[550px]">
                     <Earth
                       scale={1.1}
-                      baseColor={[1, 0, 0.3]}
+                      baseColor={[0.5, 0.2, 1]}
                       markerColor={[0, 0, 0]}
-                      glowColor={[1, 0.3, 0.4]}
+                      glowColor={[0.7, 0.4, 1]}
                     />
                   </div>
                 </article>
