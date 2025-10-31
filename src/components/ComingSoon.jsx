@@ -12,15 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const ComingSoon = ({ feature }) => {
-  // {
-  //   console.log(
-  //     feature.objectives.map((item, idx) => {
-  //       console.log(item);
-  //     }),
-  //   );
-  // }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950/30 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen [background:radial-gradient(125%_125%_at_50%_10%,#000_50%,#63e_100%)] relative overflow-hidden">
       {/* Animated Tech Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating Code Elements */}
@@ -103,77 +96,80 @@ const ComingSoon = ({ feature }) => {
         <div className="absolute top-1/2 left-1/2 w-20 h-20 bg-green-500/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }}></div> */}
       </div>
 
-      <div className="flex items-center justify-center min-h-screen px-4 relative z-10">
-        <div className="text-center max-w-md animate-fade-in">
-          <div className="mb-8">
+      <div className="flex items-center justify-center min-h-screen px-4 py-8 relative z-10">
+        <div className="text-center max-w-2xl animate-fade-in">
+          <div className="mb-6">
             {/* Neon Glowing Icon Container */}
-            <div className="relative inline-flex items-center justify-center w-24 h-24 mb-6">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-md opacity-60 animate-pulse"></div>
-              <div className="relative bg-gradient-to-r from-purple-500 to-blue-500 rounded-full p-6 shadow-lg shadow-purple-500/50">
-                <Clock className="h-12 w-12 text-slate-900" />
+            <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
+              <div className="relative bg-gradient-to-r from-purple-600 to-blue-600 rounded-full p-4 shadow-2xl shadow-purple-500/50">
+                <Clock className="h-10 w-10 text-white" />
               </div>
               <div
-                className="absolute inset-0 rounded-full border-2 border-purple-400/50 animate-spin"
+                className="absolute inset-0 rounded-full border-2 border-purple-400/40 animate-spin"
                 style={{ animationDuration: "3s" }}
               ></div>
             </div>
 
             {/* Neon Title */}
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent ">
+            <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
               {feature.title}
             </h1>
-            <div className="text-4xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text mb-6">
+            <div className="text-2xl md:text-3xl font-bold text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text mb-4">
               Coming Soon
             </div>
 
-            <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-              We're crafting something extraordinary.
+            <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed max-w-xl mx-auto">
+              We're building something amazing just for you.
               <span className="text-purple-400 font-semibold">
                 {" "}
                 {feature.title}
               </span>{" "}
-              will revolutionize your coding experience!
+              will take your coding journey to the next level!
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {/* Neon Feature Box */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-sm"></div>
-              <div className="relative bg-slate-900/80 border-2 border-purple-500/30 p-6 backdrop-blur-sm hover:border-purple-400/50 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <Zap className="h-6 w-6 text-yellow-400 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 blur-xl"></div>
+              <div className="relative bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-xl p-5 hover:border-purple-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Zap className="h-5 w-5 text-yellow-400 animate-pulse" />
                   <h3 className="text-purple-400 font-bold text-lg">
-                    Next-Gen Features
+                    What's Coming
                   </h3>
                 </div>
-                <ul className="text-slate-300 text-sm space-y-2 text-left">
-                  {feature.objectives.map((item, idx) => {
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      {item}
-                    </li>;
-                  })}
+                <ul className="text-gray-300 text-sm space-y-2 text-left max-w-md mx-auto">
+                  {feature.objectives.map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <div
+                        className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse flex-shrink-0"
+                        style={{ animationDelay: `${idx * 0.2}s` }}
+                      ></div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                   <li className="flex items-center gap-2">
                     <div
-                      className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
-                      style={{ animationDelay: "0.5s" }}
+                      className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse flex-shrink-0"
+                      style={{ animationDelay: "0.6s" }}
                     ></div>
-                    Real-time collaboration with global developers
+                    <span>Real-time collaboration with developers worldwide</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <div
-                      className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"
+                      className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse flex-shrink-0"
+                      style={{ animationDelay: "0.8s" }}
+                    ></div>
+                    <span>Advanced analytics & performance tracking</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div
+                      className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse flex-shrink-0"
                       style={{ animationDelay: "1s" }}
                     ></div>
-                    Advanced analytics & performance insights
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div
-                      className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"
-                      style={{ animationDelay: "1.5s" }}
-                    ></div>
-                    Immersive community & learning platform
+                    <span>Vibrant community & interactive learning</span>
                   </li>
                 </ul>
               </div>
@@ -181,8 +177,8 @@ const ComingSoon = ({ feature }) => {
 
             {/* Neon Back Button */}
             <Link to="/">
-              <Button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white border-2 border-purple-400/50 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <Button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 text-sm font-semibold rounded-xl shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                 <ArrowLeft className="mr-2 h-4 w-4 relative z-10" />
                 <span className="relative z-10">Back to Home</span>
               </Button>
@@ -190,12 +186,12 @@ const ComingSoon = ({ feature }) => {
           </div>
 
           {/* Progress Indicator */}
-          <div className="mt-8 flex justify-center">
+          <div className="mt-6 flex justify-center">
             <div className="flex gap-2">
               {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-2 h-2 bg-purple-400/50 rounded-full animate-pulse"
+                  className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"
                   style={{ animationDelay: `${i * 0.2}s` }}
                 ></div>
               ))}

@@ -3,11 +3,11 @@ import ComingSoon from "../components/ComingSoon";
 
 export default function ContestPage() {
   const options = {
-    title: "Contest",
+    title: "Contests",
     objectives: [
-      "Crafted Curriculum",
-      "Beginner Friendly",
-      "Immersive Solving Topics",
+      "Competitive coding challenges",
+      "Live leaderboards & rankings",
+      "Time-bound problem solving",
     ],
   };
   return (
