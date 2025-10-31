@@ -13,7 +13,7 @@ const AllProblems = () => {
 
   if (isProblemsLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="min-h-screen [background:radial-gradient(125%_125%_at_50%_10%,#000_50%,#63e_100%)] flex items-center justify-center">
         <Loader className="" />
       </div>
     );
@@ -24,9 +24,11 @@ const AllProblems = () => {
       {problems.length > 0 ? (
         <NewProblemPage problems={problems} />
       ) : (
-        <p className="mt-10 text-center text-lg font-semibold text-gray-500 dark:text-gray-400 z-10 border border-primary px-4 py-2 rounded-md border-dashed">
-          No problems found
-        </p>
+        <div className="min-h-screen [background:radial-gradient(125%_125%_at_50%_10%,#000_50%,#63e_100%)] flex items-center justify-center">
+          <p className="text-center text-lg font-semibold text-gray-400 border border-purple-500/30 px-6 py-3 rounded-xl border-dashed bg-gray-800/30 backdrop-blur-sm">
+            No problems found
+          </p>
+        </div>
       )}
     </>
   );

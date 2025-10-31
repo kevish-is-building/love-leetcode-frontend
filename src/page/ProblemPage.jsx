@@ -26,10 +26,13 @@ function ConfirmDeleteModal({ isOpen, onClose, onDelete }) {
       <div className="bg-zinc-900 border border-red-700 rounded-lg shadow-xl p-6 w-full max-w-xs relative">
         <div className="flex items-center gap-3 mb-4">
           <TrashIcon className="w-7 h-7 text-red-500" />
-          <span className="text-lg font-bold text-red-400">Delete Problem?</span>
+          <span className="text-lg font-bold text-red-400">
+            Delete Problem?
+          </span>
         </div>
         <p className="text-sm text-red-300 mb-6">
-          Are you sure you want to delete this problem? This action cannot be undone.
+          Are you sure you want to delete this problem? This action cannot be
+          undone.
         </p>
         <div className="flex justify-end gap-2">
           <button
@@ -58,17 +61,18 @@ export default function ProblemPage({ problems }) {
   const [difficulty, setDifficulty] = useState("ALL");
   const [selectedTag, setSelectedTag] = useState("ALL");
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [isAddToPlaylistModalOpen, setIsAddToPlaylistModalOpen] = useState(false);
+  const [isAddToPlaylistModalOpen, setIsAddToPlaylistModalOpen] =
+    useState(false);
   const [selectedProblemId, setSelectedProblemId] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteProblemId, setDeleteProblemId] = useState(null);
 
   // Extract all unique tags from problems
   const allTags = useMemo(() => {
-      if (!Array.isArray(problems)) return [];
-      const tagsSet = new Set();
-      problems.forEach((p) => p.tags?.forEach((t) => tagsSet.add(t)));
-      return Array.from(tagsSet);
+    if (!Array.isArray(problems)) return [];
+    const tagsSet = new Set();
+    problems.forEach((p) => p.tags?.forEach((t) => tagsSet.add(t)));
+    return Array.from(tagsSet);
   }, [problems]);
 
   const difficulties = ["EASY", "MEDIUM", "HARD"];
@@ -110,7 +114,6 @@ export default function ProblemPage({ problems }) {
   //   tags: allTags,
   //   status: [],
   // });
-
 
   // const handleFilterChange = (category, value) => {
   //   setFilters((prev) => {
@@ -165,21 +168,20 @@ export default function ProblemPage({ problems }) {
       .filter((problem) =>
         selectedTag === "ALL" ? true : problem.tags?.includes(selectedTag),
       );
-    }, [problems, search, difficulty, selectedTag]);
+  }, [problems, search, difficulty, selectedTag]);
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case "EASY":
-        return "text-green-500 bg-green-900/40";
+        return "text-green-300 bg-green-900/30 border border-green-500/30";
       case "MEDIUM":
-        return "text-yellow-500 bg-yellow-900/40";
+        return "text-yellow-300 bg-yellow-900/30 border border-yellow-500/30";
       case "HARD":
-        return "text-red-500 bg-red-900/40";
+        return "text-red-300 bg-red-900/30 border border-red-500/30";
       default:
-        return "text-gray-500 bg-gray-900/20";
+        return "text-gray-300 bg-gray-900/30 border border-gray-500/30";
     }
   };
-
 
   const [visibleCount, setVisibleCount] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
@@ -225,20 +227,21 @@ export default function ProblemPage({ problems }) {
   }, [visibleCount, filteredProblems.length, isLoading]);
 
   return (
-    <div className="pt-20 pb-16 px-4 min-h-screen bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-900">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen [background:radial-gradient(125%_125%_at_50%_10%,#000_50%,#63e_100%)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex justify-between items-center mb-8"
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12"
         >
           <div>
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
-              className="text-3xl font-bold text-white mb-2"
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-3"
             >
               Problem Set
             </motion.h1>
@@ -246,19 +249,22 @@ export default function ProblemPage({ problems }) {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
-              className="text-gray-400"
+              className="text-gray-300 text-lg"
             >
               Sharpen your coding skills with our curated collection of
               algorithmic challenges.
             </motion.p>
           </div>
-          <button
-            className="gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg flex items-center hover:shadow-lg transition-all duration-200 hover:rounded-none cursor-pointer"
+          <motion.button
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
             onClick={() => setIsCreateModalOpen(true)}
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-5 h-5" />
             Create Playlist
-          </button>
+          </motion.button>
         </motion.div>
 
         {/* <div className="mb-8 flex flex-col md:flex-row gap-4">
@@ -338,116 +344,142 @@ export default function ProblemPage({ problems }) {
             )}
           </div>
         </div> */}
-        {/* Filters */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4">
-          <div className="flex-grow relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-indigo-400" size={20} />
+        {/* Search and Filters Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.7 }}
+          className="mb-8 flex flex-col md:flex-row gap-4"
+        >
+          {/* Search Bar */}
+          <div className="flex-grow relative group">
+            <Search
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400 group-focus-within:text-purple-300 transition-colors"
+              size={20}
+            />
             <input
               type="text"
-              placeholder="Search by title"
-              className="w-full pl-10 pr-4 py-2 rounded-md bg-zinc-900 border border-zinc-800 text-white placeholder-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              placeholder="Search problems by title..."
+              className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 hover:bg-gray-800/70"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
+
+          {/* Difficulty Filter */}
           <select
-            className="rounded-md px-4 py-2 bg-zinc-900 border border-zinc-800 text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="rounded-xl px-5 py-3.5 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-200 font-medium focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 hover:bg-gray-800/70 cursor-pointer min-w-[180px]"
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value)}
           >
-            <option value="ALL">All Difficulties</option>
+            <option value="ALL" className="bg-gray-900">
+              All Difficulties
+            </option>
             {difficulties.map((diff) => (
-              <option key={diff} value={diff}>
+              <option key={diff} value={diff} className="bg-gray-900">
                 {diff.charAt(0).toUpperCase() + diff.slice(1).toLowerCase()}
               </option>
             ))}
           </select>
+
+          {/* Tags Filter */}
           <select
-            className="rounded-md px-4 py-2 bg-zinc-900 border border-zinc-800 text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="rounded-xl px-5 py-3.5 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-200 font-medium focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 hover:bg-gray-800/70 cursor-pointer min-w-[160px]"
             value={selectedTag}
             onChange={(e) => setSelectedTag(e.target.value)}
           >
-            <option value="ALL">All Tags</option>
+            <option value="ALL" className="bg-gray-900">
+              All Tags
+            </option>
             {allTags.map((tag) => (
-              <option key={tag} value={tag}>
+              <option key={tag} value={tag} className="bg-gray-900">
                 {tag}
               </option>
             ))}
           </select>
-        </div>
+        </motion.div>
 
-        <div className="">
-          <table className="min-w-full bg-gray-900 rounded-lg overflow-hidden">
+        {/* Problems Table */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.7 }}
+          className="rounded-2xl bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 overflow-hidden shadow-2xl"
+        >
+          <table className="min-w-full">
             <thead>
-              <tr className="bg-gray-800">
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <tr className="bg-gray-900/50 border-b border-gray-700/50">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-300 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-300 uppercase tracking-wider">
                   Save
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-300 uppercase tracking-wider">
                   Title
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-300 uppercase tracking-wider">
                   Difficulty
                 </th>
                 {authUser?.data?.role === "ADMIN" && (
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                    Edit
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-300 uppercase tracking-wider">
+                    Actions
                   </th>
                 )}
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-purple-300 uppercase tracking-wider">
                   Tags
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-800">
+            <tbody className="divide-y divide-gray-700/30">
               <AnimatePresence>
                 {filteredProblems.slice(0, visibleCount).map((problem, idx) => {
-                  const isSolved = problem.solvedBy.some(
-                    (user) => user.userId === authUser?.data?.id,
-                  );
+                  const isSolved =
+                    problem?.solvedBy?.some(
+                      (user) => user.userId === authUser?.data?.id,
+                    ) || false;
                   return (
                     <motion.tr
                       key={problem.id}
-                      className="group transition-colors hover:bg-gray-800/50"
+                      className="group transition-all duration-300 hover:bg-gray-700/30"
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 30 }}
                       transition={{
                         duration: 0.5,
-                        delay: 0.1 + idx * 0.07,
+                        delay: 0.1 + idx * 0.05,
                         ease: "easeOut",
                       }}
                     >
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-5 whitespace-nowrap">
                         {isSolved ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
+                          <CheckCircle className="h-6 w-6 text-green-400 drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
                         ) : (
-                          <div className="h-5 w-5 rounded-full border-2 border-gray-500" />
+                          <div className="h-6 w-6 rounded-full border-2 border-gray-500 group-hover:border-purple-400 transition-colors" />
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-5 whitespace-nowrap">
                         <button
-                          className="text-indigo-400 hover:text-indigo-300 font-medium flex items-center cursor-pointer"
+                          className="text-purple-400 hover:text-purple-300 hover:scale-110 transition-all duration-300 cursor-pointer"
                           onClick={() => handleAddToPlaylist(problem.id)}
                         >
-                          <Bookmark className="w-4 h-4" />
+                          <Bookmark className="w-5 h-5" />
                         </button>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-5">
                         <Link
                           to={`/problem/${problem.id}`}
-                          className="text-indigo-400 hover:text-indigo-300 font-medium flex items-center"
+                          className="text-blue-400 hover:text-blue-300 font-medium flex items-center group/link transition-colors"
                         >
-                          {problem.title}
-                          <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <span className="group-hover/link:underline">
+                            {problem.title}
+                          </span>
+                          <ArrowUpRight className="ml-1.5 h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                         </Link>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-5 whitespace-nowrap">
                         <span
-                          className={`px-2 py-1 text-xs font-medium rounded-full ${getDifficultyColor(
+                          className={`px-3 py-1.5 text-xs font-semibold rounded-lg ${getDifficultyColor(
                             problem.difficulty,
                           )}`}
                         >
@@ -455,33 +487,39 @@ export default function ProblemPage({ problems }) {
                         </span>
                       </td>
                       {authUser?.data?.role === "ADMIN" && (
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400 flex items-center gap-2">
-                          <Link
-                            to={`/add-problem`}
-                            className="text-indigo-400 hover:text-indigo-300 font-medium flex items-center"
-                          >
-                            <PenBoxIcon className="w-4 h-4" />
-                          </Link>
-                        <button
-                              onClick={() => handleDeleteClick(problem.id)}
-                              className="btn btn-sm btn-error"
+                        <td className="px-6 py-5 whitespace-nowrap">
+                          <div className="flex items-center gap-3">
+                            <Link
+                              to={`/add-problem`}
+                              className="text-blue-400 hover:text-blue-300 hover:scale-110 transition-all duration-300"
                             >
-                              <TrashIcon className="w-4 h-4 text-white hover:text-red-400/70 cursor-pointer" />
+                              <PenBoxIcon className="w-5 h-5" />
+                            </Link>
+                            <button
+                              onClick={() => handleDeleteClick(problem.id)}
+                              className="text-red-400 hover:text-red-300 hover:scale-110 transition-all duration-300 cursor-pointer"
+                            >
+                              <TrashIcon className="w-5 h-5" />
                             </button>
-                      </td>
+                          </div>
+                        </td>
                       )}
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-5">
                         <div className="flex flex-wrap gap-2">
-                          {problem.tags.slice(0, 2).map((tag, index) => (
+                          {problem?.tags?.slice(0, 2).map((tag, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 text-xs bg-gray-800 text-gray-300 rounded-full"
+                              className="px-3 py-1 text-xs bg-purple-900/30 text-purple-200 rounded-lg border border-purple-500/30 font-medium"
                             >
                               {tag}
                             </span>
-                          ))}
-                          {problem.tags.length > 2 && (
-                            <span className="px-2 py-1 text-xs bg-gray-800 text-gray-300 rounded-full">
+                          )) || (
+                            <span className="text-gray-500 text-xs">
+                              No tags
+                            </span>
+                          )}
+                          {problem?.tags?.length > 2 && (
+                            <span className="px-3 py-1 text-xs bg-purple-900/30 text-purple-200 rounded-lg border border-purple-500/30 font-medium">
                               +{problem.tags.length - 2}
                             </span>
                           )}
@@ -493,19 +531,43 @@ export default function ProblemPage({ problems }) {
               </AnimatePresence>
             </tbody>
           </table>
-        </div>
+        </motion.div>
 
+        {/* Loading More Indicator */}
         {visibleCount < filteredProblems.length && (
-          <div className="text-center py-4 text-gray-400">Loading more...</div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-8"
+          >
+            <div className="inline-flex items-center gap-2 text-purple-400 font-medium">
+              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-100"></div>
+              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-200"></div>
+              <span className="ml-2">Loading more problems...</span>
+            </div>
+          </motion.div>
         )}
 
+        {/* Empty State */}
         {filteredProblems.length === 0 && (
-          <div className="text-center py-10">
-            <p className="text-gray-800">
-              No problems match your filters. Try adjusting your search
-              criteria.
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-center py-16 mt-8"
+          >
+            <div className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-12 max-w-md mx-auto">
+              <Search className="w-16 h-16 text-purple-400/50 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-white mb-2">
+                No Problems Found
+              </h3>
+              <p className="text-gray-400">
+                No problems match your filters. Try adjusting your search
+                criteria.
+              </p>
+            </div>
+          </motion.div>
         )}
       </div>
       <CreatePlaylistModal
