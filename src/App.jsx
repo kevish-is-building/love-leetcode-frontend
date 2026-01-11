@@ -19,6 +19,7 @@ import ContactUs from "./page/ContactUs";
 import Dashboard from "./page/Dashboard";
 import AdminPanel from "./page/AdminPanel";
 import BackendStatusPopup from "./components/BackendStatusPopup";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -92,6 +93,7 @@ const App = () => {
           )}
         </Route>
       </Routes>
+      <SpeedInsights />
     </>
   );
 };

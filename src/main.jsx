@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { inject } from "@vercel/analytics";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./index.css";
 import App from "./App.jsx";
 
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
     <GoogleOAuthProvider clientId={googleClientId}>
       <BrowserRouter>
         <App />
+        <SpeedInsights />
       </BrowserRouter>
     </GoogleOAuthProvider>
   </StrictMode>,
